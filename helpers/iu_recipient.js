@@ -8,9 +8,9 @@ let sqlConnection = mysql.createConnection({
 });
 
 module.exports = {
-    insert: function (req, res, fname, lname, age, condition, ssn, bloodType,weight) {
+    insert: function (req, res, fname, lname, ssn,bloodType,amountRequired) {
         let status = 404;
-        sqlConnection.query(`INSERT INTO patient(Fname,Lname,age,pcondition,ssn,bloodType,weight)VALUES('${fname}','${lname}','${age}','${condition}','${ssn}','${bloodType}','${weight}')`, (err, rows, fields) => {
+        sqlConnection.query(`INSERT INTO patient(Fname,Lname,ssn,bloodType,amountRequired)VALUES('${fname}','${lname}','${ssn}','${bloodType}','${amountRequired}')`, (err, rows, fields) => {
             if (!err) {
                 console.log('patient inserted');
                 status = 400;
@@ -25,9 +25,9 @@ module.exports = {
 
         });
     },
-    update: function (req, res, fname, lname, age, condition, ssn, adress) {
+    update: function (req, res, fname, lname, ssn,bloodType,amountRequired) {
         let status = 404;
-        sqlConnection.query(`UPDATE donner SET Fname = '${fname}' , Lname = '${lname}' , age = '${age}', pcondition = '${condition}', adress = '${adress}' WHERE ssn = '${ssn}'`, (err, rows, fileds) => {
+        sqlConnection.query(`UPDATE donner SET Fname = '${fname}' , Lname = '${lname}' ,bloodType = '${bloodType}', amountRequired = '${amountRequired}' WHERE ssn = '${ssn}'`, (err, rows, fileds) => {
             if (!err) {
                 console.log('patient updated');
                 status = 400;
