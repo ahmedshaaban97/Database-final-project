@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express();
-const {insert,update} = require('./helpers/iu_donner_helper');
+const path = require('path');
 const bodyParser = require('body-parser');
-const doneer = require('./routes/donners');
+const exphbs = require('express-handlebars');
+const donor = require('./routes/donners');
+const main = require('./routes/main');
 const mysql = require('mysql');
+
+//setting database connection
 let sqlConnection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -19,14 +23,26 @@ sqlConnection.connect((err) => {
 });
 
 
+// this allow us to read all the style files stored in the public directory
+app.use(express.static(path.join(__dirname,'public')));
+
+//set view engine
+app.engine('handlebars',exphbs({defaultLayout: 'home' }));
+app.set('view engine','handlebars');
+
+//data parsing middlewears
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use('/donner', doneer);
+app.use('/',main);
+app.use('/donner', donor);
 
+
+
+//running the server
 app.listen(444, err => {
     if (err)
-        return console.log(err);
-    console.log('server connected');
+        console.log(err);
+    console.log('server connected')
 });
 

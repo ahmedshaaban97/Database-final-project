@@ -9,7 +9,7 @@ let sqlConnection = mysql.createConnection({
 let success = 400;
 let fail = 404;
 module.exports = {
-    insert: function (req, res, fname, lname, age, weight, ssn) {
+    insert: function (req, res, fname, lname, bloodType, amountRequired) {
         let status = 404;
         let sql = `INSERT INTO donor(Fname,Lname,age,weight,ssn)VALUES('${fname}','${lname}','${age}','${weight}','${ssn}')`
         sqlConnection.query(sql, (err, rows, fields) => {
@@ -80,18 +80,5 @@ module.exports = {
         })
     },
 
-    testDonner: function () {
-        let sql = 'SELECT * FROM donor'
-        sqlConnection.query(sql, (err, rows, fields) => {
-            if (err) {
-                createDonorsTable();
-                createEmployeeTable();
-                createRecipientTable();
-            }
-            if (!err) {
-                console.log('Database already set and ready for use')
-            }
 
-        });
-    }
 };
