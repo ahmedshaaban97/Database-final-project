@@ -19,13 +19,13 @@ router.delete('/delete/:ssn', (req, res) => {
 
 //insert donner
 router.post('/insert', (req, res) => {
-    let status = insert(req, res, req.body.fname, req.body.lname, req.body.age, req.body.condition, req.body.ssn, req.body.adress);
+    let status = insert(req, res, req.body.fname, req.body.lname, req.body.age, req.body.condition, req.body.ssn, req.body.bloodTybe,req.body.weight);
     console.log(status);
 });
 
 //update certain donner
 router.put('/update', (req, res) => {
-    let status = update(req, res, req.body.fname, req.body.lname, req.body.age, req.body.condition, req.body.ssn, req.body.adress);
+    let status = update(req, res, req.body.fname, req.body.lname, req.body.age, req.body.condition, req.body.ssn, req.body.bloodTybe,req.body.weight);
 
     console.log(status);
 });
