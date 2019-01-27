@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 444
 const path = require('path');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
@@ -40,7 +41,7 @@ app.use('/donner', donor);
 
 
 //running the server
-app.listen(444, err => {
+app.listen(port, err => {
     if (err)
         console.log(err);
     console.log('server connected')
