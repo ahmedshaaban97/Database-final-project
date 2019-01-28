@@ -9,7 +9,7 @@ let sqlConnection = mysql.createConnection({
 module.exports = {
 
     createDonorsTable : function () {
-        let sql = `CREATE TABLE donor(Fname VARCHAR(250),Lname VARCHAR(250),ssn INT NOT NULL,bloodType VARCHAR(10), weight INT , age INT , numOfDonation INT, PRIMARY KEY (ssn) );`
+        let sql = `CREATE TABLE donor(Fname VARCHAR(250),Lname VARCHAR(250),ssn INT NOT NULL,bloodType VARCHAR(10), weight INT , age INT , numOfDonation INT DEFAULT 0, PRIMARY KEY (ssn) );`
         sqlConnection.query(sql, (err, rows, fields) => {
             if (!err) {
                 console.log('donors table created successfully');

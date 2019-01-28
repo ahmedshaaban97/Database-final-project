@@ -4,6 +4,7 @@ const port = process.env.PORT || 4444;
 const path = require('path');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
+const recipient = require('./routes/recipient');
 const donor = require('./routes/donners');
 const main = require('./routes/main');
 const mysql = require('mysql');
@@ -36,7 +37,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/',main);
-app.use('/donner', donor);
+app.use('/api/donner', donor);
+app.use('/api/recipient',recipient);
 
 
 
