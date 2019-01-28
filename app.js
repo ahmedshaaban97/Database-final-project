@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const recipient = require('./routes/recipient');
 const donor = require('./routes/donners');
+const employee = require('./routes/employee');
+const admin_donor = require('./routes/admin/donors');
 const main = require('./routes/main');
 const mysql = require('mysql');
 
@@ -26,20 +28,26 @@ sqlConnection.connect((err) => {
 
 
 // this allow us to read all the style files stored in the public directory
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //set view engine
-app.engine('handlebars',exphbs({defaultLayout: 'home' }));
-app.set('view engine','handlebars');
+app.engine('handlebars', exphbs({defaultLayout: 'home'}));
+app.set('view engine', 'handlebars');
 
 //data parsing middlewears
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use('/',main);
-app.use('/api/donner', donor);
-app.use('/api/recipient',recipient);
+// users APIs
+app.use('/', main);
+app.use('/api/donor', donor);
+app.use('/api/employee', employee);
+app.use('/api/recipient', recipient);
 
+
+
+// Admin APIs
+app.use('/admin/donor',admin_donor)
 
 
 //running the server

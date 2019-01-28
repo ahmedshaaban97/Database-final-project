@@ -1,0 +1,72 @@
+
+body
+{ background: rgb(209, 203, 198);
+ color:black;
+font-family: verdana, Arial, Geneva, Arial Black;
+	        background-image: url("ttt.jpg");
+			background-size : 100% ;
+}
+
+h1
+{
+ 
+ color: black;
+
+}
+
+h2
+{
+ 
+ color: black;
+}
+
+ #contain {position : absolute ;
+			width : 100%;
+			height : 100%;
+			text-align : center ;
+            background-image: url("aboutusbg.jpg");
+			background-size : 100%;
+			font-size : bolder ;
+				}
+	
+	
+	    .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  color: white;
+  text-align: center;
+  }
+	.copyright
+	{
+	background-color :rgb(238, 232 ,232);
+	color : black ;
+	}
+	span{
+	
+	border-color : transparent ;
+	border-width : 3 px ;
+	border-style : dashed;
+	padding : 20 px ;
+	 
+	}
+	
+	.phone	{
+	    font-size: 20px;
+
+	}
+	
+	.branc {
+	
+	text-align : center ;
+	}
+
+	.lead {
+	
+	font-size : 160%;
+	padding-bottom : 10px;
+	font-style : italic ;
+	}
+	

@@ -1,0 +1,42 @@
+
+body
+{
+    margin-top: 70px;
+    background: rgb(209, 203, 198);
+ color:black;
+font-family: verdana, Arial, Geneva, Arial Black;
+	        background-image: url("../image/donorbg.jpg");
+			background-size : 100% ;
+
+}
+
+h1
+{
+ 
+ color: black;
+
+}
+
+h2
+{
+ 
+ color: black;
+}
+
+
+ 	    .footer {
+  position: abslute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  color: white;
+  text-align: center;
+  }
+	.copyright
+	{
+	background-color :rgb(238, 232 ,232);
+	color : black ;
+	}
+	background-color 
+	

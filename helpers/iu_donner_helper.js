@@ -1,4 +1,5 @@
-const {createDonorsTable, createEmployeeTable, createRecipientTable} = require('./create_tables_helper')
+const {createDonorsTable, createEmployeeTable, createRecipientTable} = require('./create_tables_helper');
+
 const mysql = require('mysql');
 let sqlConnection = mysql.createConnection({
     host: 'localhost',
@@ -9,9 +10,9 @@ let sqlConnection = mysql.createConnection({
 let success = 400;
 let fail = 404;
 module.exports = {
-    insert: function (req, res, fname, lname, age, ssn, bloodType, weight, numOfDonations) {
+    insert: async function (req, res, fname, lname, age, ssn, bloodType, weight, numOfDonations) {
         let status = 404;
-        sqlConnection.query(`INSERT INTO donor(Fname,Lname,age,ssn,bloodType,weight)VALUES('${fname}','${lname}','${age}','${ssn}','${bloodType}','${weight}')`, (err, rows, fields) => {
+        await sqlConnection.query(`INSERT INTO donor(Fname,Lname,age,ssn,bloodType,weight)VALUES('${fname}','${lname}','${age}','${ssn}','${bloodType}','${weight}')`, (err, rows, fields) => {
             if (!err) {
                 console.log('patient inserted');
                 status = 400;
@@ -20,8 +21,8 @@ module.exports = {
                 console.log(err);
             }
 
-
         });
+         return status
     },
     update: function (req, res, fname, lname, age, ssn, bloodType, weight) {
         let status = 404;
@@ -38,20 +39,24 @@ module.exports = {
         });
     },
 
-    select: function (req, res) {
-        let status = 404;
-        let sql = 'SELECT * FROM donor'
-        sqlConnection.query(sql, (err, rows, fields) => {
+    select:  function (req, res) {
+        let status = "";
+        let sql =  'SELECT * FROM donor'
+        let connection =  sqlConnection.query(sql, (err, rows, fields) => {
             if (!err) {
                 console.log('table selected');
-                console.log(rows[0].numOfDonation)
+                res.send(JSON.stringify(rows))
                 status = 400;
-                console.log(status);
+                console.log(`in connection success ${status}`);
+                return success;
             } else {
                 console.log(err);
+                status = fail;
                 return fail;
             }
         });
+
+
     },
 
     select_ssn: function (req, res, ssn) {
@@ -76,11 +81,11 @@ module.exports = {
 
     testDonner:
 
-        function () {
+       async function () {
             let sql = 'SELECT * FROM donor'
             sqlConnection.query(sql, (err, rows, fields) => {
                 if (err) {
-                    createDonorsTable();
+                   createDonorsTable();
                     createEmployeeTable();
                     createRecipientTable();
                 }
@@ -90,12 +95,12 @@ module.exports = {
 
             });
         },
-    incrementNumOfDonations: function (req,res,ssn) {
+    incrementNumOfDonations: async function (req,res,ssn) {
         let sql = 'SELECT * FROM donor where ssn = ?'
         sqlConnection.query(sql, [ssn], (err, rows, fields) => {
 
             if (!err){
-                console.log(`function = ${rows[0].numOfDonation}`)
+                console.log(rows)
 
             }
 

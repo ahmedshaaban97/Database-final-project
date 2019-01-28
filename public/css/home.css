@@ -1,0 +1,44 @@
+
+body{
+
+	color:black;
+	font-family: verdana, Arial, Geneva, Arial Black;
+	background-size : 100% ;
+}
+
+h1{
+ 
+	color: black;
+
+	}
+
+h2{
+ 
+	color: black;
+	}
+
+#contain {
+	position : absolute ;
+	width : 100%;
+	height : 100%;
+	text-align: center ;
+	background-image: url("../image/homebg.jpg");
+	background-size: 100% ;
+	}
+	
+	
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color:white;
+	color: white;
+	text-align: center;
+	}
+	
+.copyright{
+	background-color :rgb(238, 232 ,232);
+	color : black ;
+	}
+	

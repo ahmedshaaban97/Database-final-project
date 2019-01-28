@@ -10,7 +10,7 @@ let sqlConnection = mysql.createConnection({
 module.exports = {
     insert: function (req, res, fname, lname, age, condition, ssn, adress) {
         let status = 404;
-        sqlConnection.query(`INSERT INTO employee(Fname,Lname,age,pcondition,ssn,adress)VALUES('${fname}','${lname}','${age}','${condition}','${ssn}','${adress}')`, (err, rows, fields) => {
+        sqlConnection.query(`INSERT INTO employee(Fname,Lname,userName,email,status,password ,ssn)VALUES('${fname}','${lname}','${userName}','${email}','${status}','${password}','${ssn}')`, (err, rows, fields) => {
             if (!err) {
                 console.log('patient inserted');
                 status = 400;
@@ -65,6 +65,21 @@ module.exports = {
                 res.send('Patient deleted');
             console.log(err)
         })
+    },
+    insertRoot: function () {
+        let status = 404;
+        sqlConnection.query(`INSERT INTO employee(Fname,Lname,userName,email,status,password ,ssn)VALUES('root','root','root','root','Admin','root','0')`, (err, rows, fields) => {
+            if (!err) {
+                console.log('root user inserted');
+                console.log(status);
+
+            } else {
+                console.log(err);
+
+            }
+
+
+        });
     }
 
 };
