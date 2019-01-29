@@ -26,7 +26,7 @@ module.exports = {
     },
     update: function (req, res, fname, lname, age, ssn, bloodType, weight) {
         let status = 404;
-        let sql = `UPDATE donor SET Fname = '${fname}' , Lname = '${lname}' , age = '${age}', weight = '${weight}', bloodType = '${bloodType}' WHERE ssn = '${ssn}'`
+        let sql = `UPDATE donor SET Fname = '${fname}' , Lname = '${lname}' , age = '${age}', weight = '${weight}', bloodType = '${bloodType}' WHERE ssn = '${ssn}'`;
         sqlConnection.query(sql, (err, rows, fileds) => {
 
             if (!err) {

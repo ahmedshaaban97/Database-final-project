@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {insert} = require('../../helpers/iu_donner_helper');
+const {insert ,update} = require('../../helpers/iu_donner_helper');
 
 const mysql = require('mysql');
 let sqlConnection = mysql.createConnection({
@@ -61,9 +61,23 @@ router.post('/update',(req,res)=>{
     }) ;
 });
 
+router.post('/update_ssn',(req,res)=>{
+    let sql = `UPDATE donor SET Fname = '${req.body.fname}' , Lname = '${req.body.lname}' ,ssn = '${req.body.ssn}', age = '${req.body.age}', weight = '${req.body.weight}', bloodType = '${req.body.bloodTybe}' WHERE ssn = '${req.body.ssn}'`;
+    sqlConnection.query(sql, (err, rows, fileds) => {
+        if (!err) {
+            console.log('patient updated');
+            res.redirect('/admin/donor');
+        } else {
+            console.log(err);
+        }
+    });
+
+});
 
 
 
+
+// insert donor
 router.get('/insert',(req,res)=>{
     res.render('admin/donors/create');
 });
@@ -72,7 +86,20 @@ router.post('/insert', async (req, res) => {
     await res.redirect('/admin/donor');
 });
 
+//delete donor
+router.get('/delete',(req,res)=>{
+    res.render('admin/donors/delete');
+});
 
+router.post('/delete',(req,res)=>{
+    let sql = 'DELETE FROM donor where ssn = ?';
+    sqlConnection.query(sql, [req.body.ssn], (err, rows, fields) => {
+        if (!err)
+            res.redirect('/admin/donor');
+        else
+        console.log(err)
+    })
+});
 
 
 

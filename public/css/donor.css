@@ -1,42 +1,50 @@
 
-body
-{
-    margin-top: 70px;
+body {
     background: rgb(209, 203, 198);
- color:black;
-font-family: verdana, Arial, Geneva, Arial Black;
-	        background-image: url("../image/donorbg.jpg");
-			background-size : 100% ;
+    color: black;
+    font-family: verdana, Arial, Geneva, Arial Black;
+    background-image: url("../image/recipientbg.jpg");
+    background-size: 100%;
+    margin-top: 70px;
+}
+
+h1 {
+
+    color: black;
 
 }
 
-h1
-{
- 
- color: black;
+h2 {
 
+    color: black;
 }
 
-h2
-{
- 
- color: black;
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    color: white;
+    text-align: center;
 }
 
+.copyright {
+    background-color: rgb(238, 232, 232);
+    color: black;
+}
 
- 	    .footer {
-  position: abslute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: white;
-  color: white;
-  text-align: center;
-  }
-	.copyright
-	{
-	background-color :rgb(238, 232 ,232);
-	color : black ;
-	}
-	background-color 
-	
+.login {
+    box-shadow: 10px 10px 5px grey;
+    border: 2px solid black;
+    border-radius: 15px;
+    background: transparent;
+    padding: 30px;
+    padding-top: 40px;
+    width: 600px;
+    height: 460px;
+    position: absolute;
+    left: 20%;
+    top: 12%;
+
+}
