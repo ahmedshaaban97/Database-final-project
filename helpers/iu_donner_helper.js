@@ -10,7 +10,7 @@ let sqlConnection = mysql.createConnection({
 let success = 400;
 let fail = 404;
 module.exports = {
-    insert: async function (req, res, fname, lname, age, ssn, bloodType, weight, numOfDonations) {
+    insert: async function (req, res, fname, lname, age, ssn, bloodType, weight) {
         let status = 404;
         await sqlConnection.query(`INSERT INTO donor(Fname,Lname,age,ssn,bloodType,weight)VALUES('${fname}','${lname}','${age}','${ssn}','${bloodType}','${weight}')`, (err, rows, fields) => {
             if (!err) {
@@ -45,10 +45,7 @@ module.exports = {
         let connection =  sqlConnection.query(sql, (err, rows, fields) => {
             if (!err) {
                 console.log('table selected');
-                res.send(JSON.stringify(rows))
-                status = 400;
-                console.log(`in connection success ${status}`);
-                return success;
+                return rows;
             } else {
                 console.log(err);
                 status = fail;

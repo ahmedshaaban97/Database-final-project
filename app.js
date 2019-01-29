@@ -43,9 +43,6 @@ app.use('/', main);
 app.use('/api/donor', donor);
 app.use('/api/employee', employee);
 app.use('/api/recipient', recipient);
-
-
-
 // Admin APIs
 app.use('/admin/donor',admin_donor)
 

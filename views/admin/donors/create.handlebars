@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="card card-register mx-auto mt-5">
+        <div class="card-header">Insert A Donor</div>
+        <div class="card-body">
+            <form action="/admin/donor/insert" method="post">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="exampleInputName">First name</label>
+                            <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name" name="fname">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleInputLastName">Last name</label>
+                            <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name" name="lname">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Social Security Number</label>
+                    <input class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter email" name="ssn">
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="exampleInputPassword1">Weight</label>
+                            <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password" name="weight">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleConfirmPassword">Age</label>
+                            <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password" name="age">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Blood Type</label>
+                    <select id="inputState" class="form-control" width = "200" name="bloodTybe">
+                        <option selected = "bt">( O- )</option>
+                        <option>( O+ )</option>
+                        <option>( A- )</option>
+                        <option>( A+ )</option>
+                        <option>( B- )</option>
+                        <option>( B+ )</option>
+                        <option>( AB- )</option>
+                        <option>( AB+ )</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary btn-block" type="submit">Insert</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="/admin/vendor/jquery/jquery.min.js"></script>
+<script src="/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
